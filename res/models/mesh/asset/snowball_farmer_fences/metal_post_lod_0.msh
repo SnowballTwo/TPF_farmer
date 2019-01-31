@@ -1,0 +1,54 @@
+function data()
+return {
+	matConfigs = {
+		{ 0, }, 
+	},
+	subMeshes = {
+		{
+			indices = {
+				normal = {
+					count = 384,
+					offset = 1972,
+				},
+				position = {
+					count = 384,
+					offset = 1204,
+				},
+				tangent = {
+					count = 384,
+					offset = 2356,
+				},
+				uv0 = {
+					count = 384,
+					offset = 1588,
+				},
+			},
+			materials = {
+				"asset/snowball_farmer_fences/ripple.mtl", 
+			},
+		}, 
+	},
+	vertexAttr = {
+		normal = {
+			count = 204,
+			numComp = 3,
+			offset = 520,
+		},
+		position = {
+			count = 216,
+			numComp = 3,
+			offset = 0,
+		},
+		tangent = {
+			count = 480,
+			numComp = 4,
+			offset = 724,
+		},
+		uv0 = {
+			count = 304,
+			numComp = 2,
+			offset = 216,
+		},
+	},
+}
+end

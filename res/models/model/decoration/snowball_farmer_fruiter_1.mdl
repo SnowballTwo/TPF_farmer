@@ -1,0 +1,132 @@
+function data()
+return {
+	boundingInfo = {
+		bbMax = {
+			1.6595780849457, 1.1490045785904, 4.921049118042, 
+		},
+		bbMin = {
+			-1.9120438098907, -2.1038615703583, -0.15596494078636, 
+		},
+		
+	},
+	collider = {
+		params = {
+			direction = "Z",
+			
+		},
+		type = "CYLINDER",
+		
+	},
+	lods = {
+		{
+			animations = {
+				
+			},
+			children = {
+				{
+					id = "tree/orangetree_1_rt_1_lod3.msh",
+					transf = {
+						1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 
+					},
+					type = "MESH",
+					
+				}, 
+			},
+			events = {
+				
+			},
+			matConfigs = {
+				{
+					0, 
+				}, 
+			},
+			static = true,
+			visibleFrom = 0,
+			visibleTo = 6000,
+			
+		}, {
+			animations = {
+				
+			},
+			children = {
+				{
+					id = "tree/orangetree_1_rt_1_lod2.msh",
+					transf = {
+						1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 
+					},
+					type = "MESH",
+					
+				}, 
+			},
+			events = {
+				
+			},
+			matConfigs = {
+				{
+					0, 
+				}, 
+			},
+			static = false,
+			visibleFrom = 20,
+			visibleTo = 70,
+			
+		}, {
+			animations = {
+				
+			},
+			children = {
+				{
+					id = "tree/orangetree_1_rt_1_lod1.msh",
+					transf = {
+						1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 
+					},
+					type = "MESH",
+					
+				}, 
+			},
+			events = {
+				
+			},
+			matConfigs = {
+				{
+					0, 
+				}, 
+			},
+			static = false,
+			visibleFrom = 10,
+			visibleTo = 20,
+			
+		}, {
+			animations = {
+				
+			},
+			children = {
+				{
+					id = "tree/orangetree_1_rt_1_lod0.msh",
+					transf = {
+						1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 
+					},
+					type = "MESH",
+					
+				}, 
+			},
+			events = {
+				
+			},
+			matConfigs = {
+				{
+					0, 
+				}, 
+			},
+			static = false,
+			visibleFrom = 0,
+			visibleTo = 10,
+			
+		}, 
+	},
+	metadata = {	
+		
+	},
+	
+}
+end

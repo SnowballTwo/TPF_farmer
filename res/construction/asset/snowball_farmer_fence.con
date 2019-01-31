@@ -1,0 +1,46 @@
+local farmer = require "snowball_farmer"
+
+function data() return { 
+	type = "ASSET_DEFAULT",
+	buildMode = "MULTI",
+	categories = { 
+		"misc" 
+	},
+	availability = {
+		yearFrom = 244,
+		yearTo = 245
+	},
+	description = {
+		name = _("patch_title"),
+		description =  _("patch_description"),
+	},		
+	order = 197720204,
+	skipCollision = true,
+	autoRemovable = false,	
+	updateFn = function(params)	
+		
+		local result = { 
+			models = {},
+			cost = 10,
+			bulldozeCost = 10,
+			maintenanceCost = 0 
+		}
+		local outline = params.outline	
+		local center = params.center
+		local fence = params.fence
+
+		if not outline or not center or not fence then
+			result.models[#result.models+1] =
+			{					
+				id = "asset/snowball_farmer_suspensor.mdl",
+				transf = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }
+			}
+			return result
+		end
+			
+		farmer.fence(outline, center, fence, result)
+		
+		return result
+
+	end,
+} end

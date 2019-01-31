@@ -1,0 +1,75 @@
+function data()
+return {
+	boundingInfo = {
+		bbMax = { 0.06935, 0.0683, 1.28716, },
+		bbMin = { -0.06517, -0.13076, -0.07063, },
+		
+	},
+	collider = {
+		params = {
+			
+		},
+		type = "MESH",
+		
+	},
+	lods = {
+		{
+			animations = {
+				
+			},
+			children = {
+				{
+					id = "asset/snowball_farmer_fences/metal_post_lod_1.msh",
+					transf = {
+						1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 
+					},
+					type = "MESH",
+					
+				}, 
+			},
+			events = {
+				
+			},
+			matConfigs = {
+				{
+					0, 
+				}, 
+			},
+			static = true,
+			visibleFrom = 50,
+			visibleTo = 750,
+			
+		}, {
+			animations = {
+				
+			},
+			children = {
+				{
+					id = "asset/snowball_farmer_fences/metal_post_lod_0.msh",
+					transf = {
+						1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 
+					},
+					type = "MESH",
+					
+				}, 
+			},
+			events = {
+				
+			},
+			matConfigs = {
+				{
+					0, 
+				}, 
+			},
+			static = false,
+			visibleFrom = 0,
+			visibleTo = 50,
+			
+		}, 
+	},
+	metadata = {
+		
+	},
+	
+}
+end

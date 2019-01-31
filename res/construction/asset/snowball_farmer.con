@@ -1,0 +1,134 @@
+local farmer = require "snowball_farmer"
+
+local modes = {"plan", "plant", "reset"}
+local distributions = {"random", "rows"}
+local grounds = {-1, 0, 1, 2, 3, 4, 5, 6}
+local densities = {2, 4, 8, 12, 16, 24, 36, 48}
+
+function data()
+	return {
+		type = "ASSET_DEFAULT",
+		buildMode = "MULTI",
+		categories = {"tree"},
+		availability = {
+			yearFrom = 0,
+			yearTo = 0
+		},
+		description = {
+			name = _("title"),
+			description = _("description")
+		},
+		order = 197720201,
+		skipCollision = false,
+		autoRemovable = true,
+		params = {
+			{
+				key = "snowball_farmer_mode",
+				name = _("snowball_farmer_mode"),
+				values = {_("snowball_farmer_plan"), _("snowball_farmer_plant"), _("snowball_farmer_reset")},
+				defaultIndex = 0
+			},
+			{
+				key = "snowball_farmer_ground",
+				name = _("snowball_farmer_ground"),
+				values = {
+					_("snowball_farmer_ground_none"),
+					_("snowball_farmer_ground_0"),
+					_("snowball_farmer_ground_1"),
+					_("snowball_farmer_ground_2"),
+					_("snowball_farmer_ground_3"),
+					_("snowball_farmer_ground_4"),
+					_("snowball_farmer_ground_5"),
+					_("snowball_farmer_ground_6")
+				},
+				defaultIndex = 1
+			},
+			{
+				key = "snowball_farmer_decoration",
+				name = _("snowball_farmer_decoration"),
+				values = {
+					_("snowball_farmer_decoration_none"),
+					_("snowball_farmer_decoration_grass"),
+					_("snowball_farmer_decoration_fruiter")
+				},
+				defaultIndex = 0
+			},
+			{
+				key = "snowball_farmer_decoration_density",
+				name = _("snowball_farmer_decoration_density"),
+				values = {"2", "4", "8", "12", "16", "24", "36", "48"},
+				defaultIndex = 2
+			},
+			{
+				key = "snowball_farmer_decoration_distribution",
+				name = _("snowball_farmer_decoration_distribution"),
+				values = {_("snowball_farmer_decoration_distribution_random"), _("snowball_farmer_decoration_distribution_rows")},
+				defaultIndex = 0
+			},
+			{
+				key = "snowball_farmer_fence",
+				name = _("snowball_farmer_fence"),
+				values = {
+					_("snowball_farmer_fence_none"),
+					_("snowball_farmer_fence_wood"),
+					_("snowball_farmer_fence_metal"),
+					_("snowball_farmer_fence_cow")
+				},
+				defaultIndex = 0
+			},
+			{
+				key = "snowball_farmer_lock",
+				name = _("snowball_farmer_lock"),
+				values = {
+					_("snowball_farmer_lock_unlock"),
+					_("snowball_farmer_lock_lock")
+				},
+				defaultIndex = 0
+			}
+		},
+		updateFn = function(params)
+			local result = {
+				models = {},
+				cost = 10,
+				bulldozeCost = 10,
+				maintenanceCost = 0
+			}
+			local mode = modes[params.snowball_farmer_mode + 1]
+			local ground = grounds[params.snowball_farmer_ground + 1]
+			local decoration = params.snowball_farmer_decoration
+			local density = densities[params.snowball_farmer_decoration_density + 1]
+			local distribution = distributions[params.snowball_farmer_decoration_distribution + 1]
+			local interactive = params.snowball_farmer_lock == 0
+			local fence = nil
+			if params.snowball_farmer_fence > 0 then
+				fence = farmer.fences[params.snowball_farmer_fence]
+			end
+
+			result.models = {}
+
+			result.terrainAlignmentLists = {
+				{
+					type = "EQUAL",
+					faces = {}
+				}
+			}
+			local built = farmer.updateMarkers()
+
+			if not built then
+				farmer.lock(interactive)
+			end
+			
+			if mode == "plan" then
+				farmer.plan(result, ground)
+			elseif mode == "reset" then
+				farmer.reset(result)
+			elseif mode == "plant" then
+				farmer.plant(result, ground, decoration, density, distribution, fence, interactive)
+			else
+				error("Farmer: invalid operation ", mode)
+			end
+
+			return result
+		end
+	}
+end

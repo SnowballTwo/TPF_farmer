@@ -1,0 +1,49 @@
+function data()
+return {
+	params = {
+		alpha_scale = {
+			alphaScale = 1,
+			
+		},
+		alpha_test = {
+			alphaThreshold = 0.5,
+			preferAlphaToCoverage = true,
+			
+		},
+		fade_out_range = {
+			fadeOutEndDist = 20000,
+			fadeOutStartDist = 10000,
+			
+		},
+		map_color_alpha = {
+			compressionAllowed = true,
+			fileName = "models/asset/snowball_farmer_fences/ripple_albedo_lod.tga",
+			magFilter = "LINEAR",
+			minFilter = "NEAREST",
+			mipmapAlphaScale = 0,
+			type = "TWOD",
+			wrapS = "REPEAT",
+			wrapT = "REPEAT",
+			
+		},
+		polygon_offset = {
+			factor = 0,
+			units = 0,
+			
+		},
+		props = {
+			coeffs = {
+				1, 1, 0.25, 20, 
+			},
+			
+		},
+		two_sided = {
+			twoSided = true,
+			
+		},
+		
+	},
+	type = "TRANSPARENT",
+	
+}
+end
